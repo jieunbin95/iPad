@@ -1,0 +1,1754 @@
+html {
+  /* css에서 변수를 사용해 공통으로 사용하는 요소들을 변수로 지정해준다 */
+  --color-white: #fff;
+  --color-black: #000;
+  --color-font: #1d1d1d;
+  --color-font-darkgray: #6e6e6e;
+  --color-font-lightgray: #f5f5f5;
+  --color-link: #0071e3;
+  --color-link-focus: #81b9f1;
+  --color-border: #d2d2d2;
+  --color-header: #3a3a3a;
+  --color-section: #f5f5f5;
+  --color-shadow: rgba(0, 0, 0, .4);
+}
+
+html.fixed {
+  /* position:absolute 또는 fixed인 경우 가로 너비가 줄어드려는 속성으로 width는 100%로 최대한 사용할 수 있도록 설정했고,
+   overflow-y: scroll를 통해 화면에 항상 스크롤바가 생성되어있게 설정했다*/
+  position: fixed;
+  overflow-y: scroll;
+  width: 100%;
+}
+
+body {
+  font-family: "Roboto", "Noto Sans KR", sans-serif;
+  font-family: 16px;
+  line-height: 1;
+  word-break: keep-all;
+  color: var(--color-font);
+  height: 10000px;
+
+}
+
+a {
+  text-decoration: none;
+  color: var(--color-font);
+}
+
+img {
+  display: block;
+  /* 선택자가 드래그 할 수 없도록 설정 */
+  user-select: none;
+  /* 선택자가 마우스로 터치하여 요소를 드래그하는 기능을 차단하는 설정 */
+  -webkit-user-drag: none;
+}
+
+p {
+  line-height: 1.6;
+}
+
+/* 윗첨자 설정 */
+sup {
+  margin-right: 6px;
+  font-size: .7em;
+  vertical-align: top;
+}
+
+
+/* inner */
+.inner {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 20px;
+  position: relative;
+}
+
+/* btn */
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 24px;
+  padding: 0 10px;
+  border: none;
+  border-radius: 100px;
+  outline: none;
+  font-size: 11px;
+  line-height: 1;
+  color: var(--color-white);
+  background-color: var(--color-link);
+  cursor: pointer;
+}
+
+.btn:hover {
+  opacity: .7;
+}
+
+.btn:focus {
+  /* x축,y축,블러값,확산,색상 */
+  box-shadow: 0 0 0 4px var(--color-link-focus);
+}
+
+/* backgroun img text */
+.bgtext {
+  display: block;
+  text-indent: -9999px;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* 요소중 더 짧은 너비의 요소에 맞추게 된다 */
+  background-size: contain;
+}
+
+/* links */
+.links {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+}
+
+a.link {
+  color: var(--color-link);
+  font-size: 19px;
+  line-height: 1.3;
+}
+
+a.link:hover {
+  text-decoration: underline;
+}
+
+a.link::after {
+  content: " >";
+}
+
+/* feature */
+.feature {
+  display: flex;
+}
+
+/* figures */
+.figures {
+  flex-grow: 1;
+  position: relative;
+}
+
+.figures figure,
+.figures figcaption {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.figures figcaption * {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+
+
+/* infos */
+.infos {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 1;
+}
+
+.infos.infos--center {
+  justify-content: center;
+}
+
+.infos.infos--end {
+  justify-content: flex-end;
+}
+
+.info {
+  max-width: 330px;
+  margin-bottom: 24px;
+  opacity: 0;
+  transition: 1s;
+  transform: translate(0, 100px);
+}
+
+.info.show {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+.infos--large .info {
+  max-width: 410px;
+}
+
+.info .icon {
+  width: 100px;
+  height: 100px;
+  margin: 0 0 -15px -30px;
+  animation: sprite-icon 3s steps(1) infinite;
+}
+
+.info .icon.icon--chip {
+  background-image: url("../images/sprite_chip.png");
+}
+
+.info .icon.icon--faster {
+  background-image: url("../images/sprite_faster.png");
+}
+
+.info .icon.icon--neural {
+  background-image: url("../images/sprite_neural.png");
+}
+
+.info .icon.icon--apps {
+  background-image: url("../images/sprite_apps.png");
+}
+
+.info .icon.icon--battery {
+  background-image: url("../images/sprite_battery.png");
+}
+
+.info .icon.icon--display {
+  background-image: url("../images/sprite_display.png");
+}
+
+.info .icon.icon--true-tone {
+  background-image: url("../images/sprite_true_tone.png");
+}
+
+.info .icon.icon--center-stage {
+  background-image: url("../images/sprite_center_stage.png");
+}
+
+.info .icon.icon--front-camera {
+  background-image: url("../images/sprite_front_camera.png");
+}
+
+.info .icon.icon--back-camera {
+  background-image: url("../images/sprite_back_camera.png");
+}
+
+.info .icon.icon--scan {
+  background-image: url("../images/sprite_scan.png");
+}
+
+.info .icon.icon--download {
+  background-image: url("../images/sprite_download.png");
+}
+
+.info .icon.icon--wifi {
+  background-image: url("../images/sprite_wifi.png");
+}
+
+.info .icon.icon--lte {
+  background-image: url("../images/sprite_lte.png");
+}
+
+.info .icon.icon--pencil {
+  background-image: url("../images/sprite_pencil.png");
+}
+
+.info .icon.icon--keyboard {
+  background-image: url("../images/sprite_keyboard.png");
+}
+
+.info .icon.icon--notes {
+  background-image: url("../images/sprite_notes.png");
+}
+
+.info .icon.icon--covers {
+  background-image: url("../images/sprite_covers.png");
+}
+
+.info p {
+  font-size: 21.5px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.info a.link {
+  display: block;
+  margin-top: 44px;
+  font-size: 19.5px;
+}
+
+/* whitebox */
+.whitebox {
+  max-width: 1386px;
+  margin: 0 auto;
+  padding: 100px 30px;
+  border-radius: 30px;
+  box-sizing: border-box;
+  background-color: var(--color-white);
+}
+
+.whitebox.whitebox--transparent {
+  background-color: transparent;
+}
+
+.whitebox .icon {
+  margin-bottom: 20px;
+}
+
+.whitebox h1 {
+  font-size: 50px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.whitebox p {
+  margin-top: 20px;
+  font-size: 19px;
+}
+
+.whitebox a.link {
+  display: block;
+  margin-top: 26px;
+}
+
+/* Header */
+header {
+  --header-height: 44px;
+  background-color: var(--color-header);
+  /* position값이 static(기본값)이라면 z-index는 실해하지 않는다 */
+  position: relative;
+  z-index: 9;
+}
+
+header .inner {
+  max-width: 1020px;
+}
+
+header ul.menu {
+  display: flex;
+  height: var(--header-height);
+  /* 양끝에 정렬 후 일정한 간격으로 놓여지게 된다 */
+  justify-content: space-between;
+}
+
+header ul.menu>li {
+  display: flex;
+  position: relative;
+  transition: .4s;
+}
+
+header ul.menu>li>a {
+  padding: 5px 10px;
+  font-size: 11px;
+  display: flex;
+  /* 부모요소인 li태그에 display:flex를 추가해 주어야 가운데 정렬이 가능하다 */
+  align-self: center;
+  color: var(--color-font-lightgray);
+  opacity: .8;
+  text-decoration: none;
+}
+
+header ul.menu>li.apple-logo>a,
+header ul.menu>li.search-starter>a,
+header ul.menu>li.basket-starter>a {
+  width: 14px;
+  /* 들여쓰기-이미지상에 안 보이게 하기 위해 -9999px를 사용 */
+  text-indent: -9999px;
+  background-repeat: no-repeat;
+  /* 좌우/위아래 위치조정 */
+  background-position: center;
+}
+
+header ul.menu>li.apple-logo>a {
+  background-image: url('../images/header_apple.svg');
+}
+
+header ul.menu>li.search-starter>a {
+  background-image: url('../images/header_search.svg');
+}
+
+header ul.menu>li.basket-starter>a {
+  background-image: url('../images/header_bag.svg');
+}
+
+header ul.menu>li>a:hover {
+  opacity: 1;
+}
+
+/* Header/Menu/Bsket */
+header .basket {
+  /* display를 통한 속성을 줄 경우 자연스러운 애니메이션 효과를 주기 어렵기 때문에 visibility속성을 이용한다 */
+  /* display: none; */
+  visibility: hidden;
+  opacity: 0;
+  transition: 1s;
+  width: 290px;
+  padding: 10px 20px;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  box-sizing: border-box;
+  background-color: var(--color-white);
+  /* 부모요소인 menu의 li태그기준 100%로 옮겨진다음 약간의 간격을 위해 4px를 더함 */
+  position: absolute;
+  top: calc(100% + 4px);
+  right: -6px;
+}
+
+header .basket.show {
+  /* display: block; */
+  visibility: visible;
+  opacity: 1;
+}
+
+/* 화살표 만들기 */
+header .basket .arrow {
+  width: 20px;
+  height: 10px;
+  overflow: hidden;
+  position: absolute;
+  top: -10px;
+  right: 12px;
+}
+
+header .basket .arrow::before {
+  content: "";
+  width: 12px;
+  height: 12px;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-white);
+  transform: rotate(45deg);
+  /* 박스의 x축 y축의 변경을 통해 중심축을 변경  */
+  transform-origin: 0 0;
+  position: absolute;
+  top: 0;
+  left: 50%;
+}
+
+header .basket .message {
+  padding: 30px 0;
+  font-size: 13px;
+  color: var(--color-font-darkgray);
+  text-align: center;
+}
+
+header .basket ul {
+  margin-top: 10px;
+}
+
+header .basket ul>li {
+  border-top: 1px solid var(--color-border);
+}
+
+header .basket ul>li>a {
+  display: block;
+  padding: 14px;
+  font-size: 13px;
+  color: var(--color-link);
+}
+
+header .basket ul>li>a:hover {
+  text-decoration: underline;
+}
+
+/* Header/search */
+header .search-wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  visibility: hidden;
+  opacity: 0;
+  transition: .4s;
+}
+
+header .search {
+  max-width: 680px;
+  margin: 0 auto;
+  position: relative;
+}
+
+header .search .shadow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-shadow);
+}
+
+header .search .textfield {
+  position: relative;
+}
+
+header .search input {
+  width: 100%;
+  height: var(--header-height);
+  padding: 0 40px;
+  border: none;
+  outline: none;
+  box-sizing: border-box;
+  background-color: transparent;
+  font-size: 17px;
+  color: var(--color-white);
+}
+
+header .search .search-icon {
+  width: 40px;
+  height: var(--header-height);
+  background-image: url('../images/header_search.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: .4;
+}
+
+header .search .search-closer {
+  width: 40px;
+  height: var(--header-height);
+  background-image: url('../images/header_close.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+  opacity: .4;
+  cursor: pointer;
+}
+
+header .search .search-closer:hover {
+  opacity: 1;
+}
+
+header .search .autocompletes {
+  width: 100%;
+  padding: 26px 40px 20px;
+  border-radius: 0 0 18px 18px;
+  box-sizing: border-box;
+  background-color: var(--color-white);
+  position: absolute;
+  top: var(--header-height);
+  left: 0;
+}
+
+header .search .autocompletes h3 {
+  font-size: 12px;
+  color: var(--color-font-darkgray);
+  margin-bottom: 12px;
+}
+
+header .search .autocompletes ul li a {
+  display: block;
+  margin: 0 -14px;
+  padding: 10px 0 10px 30px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+header .search .autocompletes ul li:hover a {
+  background-color: var(--color-section);
+  color: var(--color-link);
+}
+
+header .search input,
+header .search .search-icon,
+header .search .autocompletes h3,
+header .search .autocompletes li {
+  transition: .6s;
+  transform: translate(100px, 0);
+}
+
+header.searching ul.menu>li {
+  opacity: 0;
+  /* 글씨크기를 줄일때 사용 */
+  transform: scale(.7);
+}
+
+header.searching .search-wrap {
+  visibility: visible;
+  opacity: 1;
+  transition-delay: .2s;
+}
+
+header.searching .search input,
+header.searching .search .search-icon,
+header.searching .search .autocompletes h3,
+header.searching .search .autocompletes li {
+  transition-delay: .2s;
+  transform: translate(0, 0);
+}
+
+/* Navigation */
+nav {
+  /* 배경 색상을 주고, 뒤에 블러처리를 위해 rgba로 색상을 선택하고, backdrop이 속성을 추가해 부모요소의 부분에 블러 처리 될 수 있게 설정 */
+  background-color: rgba(255, 255, 255, .7);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--color-border);
+  /* 스크롤이 올라갈때 상단에 고정될 수 있도록 sticky로 설정
+  sticky설정 시 위나 아래, 오른쪽이나 왼쪽의 설정값을 주어야 한다 */
+  position: sticky;
+  top: 0;
+  z-index: 8;
+}
+
+nav .inner {
+  max-width: 1000px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+}
+
+nav h1 {
+  /* 메뉴들의 위치 설정 */
+  flex-grow: 1;
+  font-size: 22px;
+  font-weight: 500;
+}
+
+nav .menu {
+  /* 각 메뉴 사이의 거리를 주기 위해 설정 */
+  display: flex;
+  gap: 12px;
+  margin-right: 18px;
+}
+
+nav .menu li a {
+  display: block;
+  padding: 6px;
+  font-size: 11px;
+}
+
+nav .menu li:hover a {
+  color: var(--color-link);
+}
+
+nav .menu li.active a {
+  opacity: .5;
+  cursor: default;
+}
+
+nav .menu li.active:hover a {
+  color: var(--color-font)
+}
+
+/* main */
+main{
+  overflow-x: hidden;
+}
+
+/* Hero */
+.hero {
+  background-color: var(--color-section);
+}
+
+.hero .inner {
+  padding-bottom: 110px;
+}
+
+.hero h1 {
+  background-image: url('../images/hero_ipad_text.png');
+  width: 221px;
+  height: 91px;
+  position: absolute;
+  transform: translate(624px, 235px);
+  z-index: 1;
+}
+
+.hero .figures {
+  height: 808px;
+}
+
+.hero figure {
+  transform: translate(74px, -64px);
+}
+
+.hero figure figcaption .caption-camera {
+  background-image: url('../images/hero_ipad_caption_camera.png');
+  width: 120px;
+  height: 84px;
+  transform: translate(43px, 580px);
+}
+
+.hero figure figcaption .caption-chip {
+  background-image: url('../images/hero_ipad_caption_chip.png');
+  width: 95px;
+  height: 43px;
+  transform: translate(589px, 510px);
+}
+
+.hero figure figcaption .caption-storage {
+  background-image: url('../images/hero_ipad_caption_storage.png');
+  width: 80px;
+  height: 43px;
+  transform: translate(627px, 631px);
+}
+
+.hero h2 {
+  background-image: url('../images/hero_headline.png');
+  width: 738px;
+  height: 145px;
+  margin: 0 auto;
+}
+
+.hero p.pricing {
+  margin-top: 40px;
+  font-size: 24px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.hero p.description {
+  width: 88%;
+  margin: 18px auto 0;
+  font-size: 19px;
+  text-align: center;
+}
+
+.hero .links {
+  margin-top: 30px;
+}
+
+/* power */
+.power {
+  margin-top: 110px;
+}
+
+/* power/.multiple-apps */
+.power .multiple-apps h1 {
+  background-image: url('../images/power_headline.png');
+  width: 500px;
+  height: 280px;
+  transform: translate(104px, 0);
+}
+
+.power .multiple-apps .figures {
+  height: 773px;
+}
+
+.power .multiple-apps figcaption {
+  background-image: url('../images/power_multiple_apps_caption.png');
+  width: 138px;
+  height: 46px;
+  transform: translate(703px, -47px);
+}
+
+/* power/arcade */
+.power .arcade {
+  margin-top: 55px;
+}
+
+.power .arcade .figures {
+  height: 600px;
+}
+
+.power .arcade figure {
+  transform: translate(-347px, -90px);
+}
+
+.power .arcade figcaption {
+  background-image: url('../images/power_arcade_caption.png');
+  width: 150px;
+  height: 77px;
+  transform: translate(483px, 653px);
+}
+
+/* power/create */
+.power .create {
+  margin-top: 55px;
+}
+
+.power .create .figures {
+  height: 772px;
+}
+
+.power .create figure {
+  transform: translate(-25px, 50px);
+}
+
+.power .create figcaption {
+  background-image: url('../images/power_create_caption.png');
+  width: 142px;
+  height: 46px;
+  transform: translate(543px, 908px);
+}
+
+/* display */
+.display {
+  margin-top: 450px;
+}
+
+/* display/notes */
+.display .notes h1 {
+  background-image: url('../images/display_headline.png');
+  width: 630px;
+  height: 370px;
+  transform: translate(104px, 0);
+}
+
+.display .notes .figures {
+  height: 814px;
+  margin-top: 26px;
+}
+
+.display .notes figcaption {
+  background-image: url('../images/display_notes_caption.png');
+  width: 145px;
+  height: 45px;
+  transform: translate(707px, -16px);
+}
+
+/* display/shareplay */
+.display .shareplay {
+  margin-top: 55px;
+}
+
+.display .shareplay .figures {
+  height: 630px;
+}
+
+.display .shareplay figure {
+  transform: translate(-360px, 0);
+}
+
+.display .shareplay figcaption {
+  background-image: url('../images/display_shareplay_caption.png');
+  width: 110px;
+  height: 48px;
+  transform: translate(300px, 658px);
+}
+
+/* camera */
+.camera .stage {
+  position: relative;
+}
+
+.camera {
+  margin-top: 303px;
+}
+
+/* camera/stage */
+.camera .stage h1 {
+  background-image: url('../images/camera_headline.png');
+  width: 650px;
+  height: 450px;
+  transform: translate(-25px.0);
+}
+
+.camera .stage .info {
+  position: absolute;
+  top: 150px;
+  right: 0;
+}
+
+.camera .stage .figures {
+  height: 770px;
+  margin-top: 24px;
+}
+
+.camera .stage figure {
+  transform: translate(90px, 0);
+}
+
+.camera .stage video {
+  position: absolute;
+  top: 36px;
+  left: 76px;
+  -webkit-mask-image: url('../images/camera_video_mask.png');
+  mask-image: url('../images/camera_video_mask.png');
+}
+
+.camera .stage .controller--play,
+.camera .stage .controller--pause {
+  color: var(--color-link);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transform: translate(428px, -110px) rotate(-3deg);
+}
+
+.camera .stage .controller--play:hover,
+.camera .stage .controller--pause:hover {
+  text-decoration: underline;
+}
+
+.camera .stage .controller--play.hide,
+.camera .stage .controller--pause.hide {
+  display: none;
+}
+
+.camera .stage .controller--play,
+.camera .stage .controller--pause {
+  width: 20px;
+  margin-top: -2px;
+}
+
+
+.camera .stage figcaption {
+  background-image: url('../images/camera_hardware_caption.png');
+  width: 130px;
+  height: 110px;
+  transform: translate(-116px, 383px);
+}
+
+/* camera/edit */
+.camera .edit .figures {
+  height: 910px;
+}
+
+.camera .edit figure {
+  transform: translate(20px, 0);
+}
+
+.camera .edit figcaption {
+  background-image: url('../images/camera_edit_caption.png');
+  width: 130px;
+  height: 47px;
+  transform: translate(20px, 905px);
+}
+
+/* wireless */
+.wireless {
+  margin-top: 202px;
+}
+
+/* wireless/facetime */
+.wireless .facetime h1 {
+  background-image: url('../images/wireless_headline.png');
+  width: 730px;
+  height: 330px;
+  transform: translate(104px, 0);
+}
+
+.wireless .facetime .figures {
+  height: 773px;
+}
+
+.wireless .facetime figure {
+  transform: translate(-68px, 0);
+}
+
+.wireless .facetime figcaption {
+  background-image: url('../images/wireless_facetime_caption.png');
+  width: 139px;
+  height: 46px;
+  transform: translate(843px, -49px);
+}
+
+/* wireless/files */
+.wireless .files figure {
+  transform: translate(34px, -34px);
+}
+
+.wireless .files figcaption {
+  background-image: url('../images/wireless_files_caption.png');
+  width: 127px;
+  height: 46px;
+  transform: translate(69px, 639px);
+}
+
+/* accessories */
+.accessories {
+  margin-top: 195px;
+}
+
+.accessories h1 {
+  background-image: url('../images/accessories_headline.png');
+  width: 550px;
+  height: 343px;
+  margin: 0 auto;
+}
+
+.accessories .figures {
+  height: 1021px;
+  margin-top: 34px;
+}
+
+.accessories figure {
+  transform: translate(-24px, 0);
+}
+
+.accessories figcaption .caption-memo {
+  background-image: url('../images/accessories_caption_memo.png');
+  width: 169px;
+  height: 41px;
+  transform: translate(790px, -52px);
+}
+
+.accessories figcaption .caption-supports {
+  background-image: url('../images/accessories_caption_supports.png');
+  width: 200px;
+  height: 70px;
+  transform: translate(163px, 821px);
+}
+
+.accessories .infos {
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+/* iPadOs */
+.ipados {
+  margin-top: 212px;
+}
+
+.ipados h1 {
+  background-image: url('../images/ipados_headline.png');
+  width: 530px;
+  height: 400px;
+  margin: 0 auto;
+}
+
+.ipados .infos {
+  margin-top: 44px;
+  align-items: flex-end;
+}
+
+.ipados .figures {
+  height: 782px;
+  display: flex;
+}
+
+.ipados .figures>div {
+  flex-grow: 1;
+  position: relative;
+}
+
+
+.ipados .figures .figure-split-view figure {
+  transform: translate(-205px, -312px);
+}
+
+.ipados .figures .figure-split-view figcaption {
+  background-image: url('../images/ipados_split_view_caption.png');
+  width: 163px;
+  height: 53px;
+  transform: translate(200px, -38px);
+}
+
+.ipados .figures .figure-widgets figure {
+  transform: translate(237px, 43px);
+}
+
+.ipados .figures .figure-widgets figcaption {
+  background-image: url('../images/ipados_widgets_caption.png');
+  width: 161px;
+  height: 46px;
+  transform: translate(257px, 497px);
+}
+
+.ipados .figures .figure-quick-note figure {
+  transform: translate(-625px, 232px);
+}
+
+.ipados .figures .figure-quick-note figcaption {
+  background-image: url('../images/ipados_quick_note_caption.png');
+  width: 82px;
+  height: 97px;
+  transform: translate(511px, 470px);
+}
+
+/* apps */
+.apps {
+  margin-top: 368px;
+}
+
+.apps h1 {
+  background-image: url('../images/apps_headline.png');
+  width: 500px;
+  height: 264px;
+  transform: translate(17px, 0);
+}
+
+.apps .infos {
+  margin-top: 36px;
+  margin-left: 82px;
+}
+
+.apps .figures {
+  height: 788px;
+  display: flex;
+}
+
+.apps .figures>div {
+  flex-grow: 1;
+  position: relative;
+}
+
+.apps .figure-masterclass figure {
+  transform: translate(578px, -431px);
+}
+
+.apps .figure-masterclass figcaption {
+  background-image: url('../images/apps_masterclass_caption.png');
+  width: 100px;
+  height: 25px;
+  transform: translate(26px, 690px);
+}
+
+.apps .figure-adobe figure {
+  transform: translate(-515px, 85px);
+}
+
+.apps .figure-adobe figcaption {
+  background-image: url('../images/apps_adobe_caption.png');
+  width: 105px;
+  height: 24px;
+  transform: translate(544px, 514px);
+}
+
+.apps .figure-fantasian figure {
+  transform: translate(-103px, 318px);
+}
+
+.apps .figure-fantasian figcaption {
+  background-image: url('../images/apps_fantasian_caption.png');
+  width: 74px;
+  height: 22px;
+  transform: translate(24px, 483px);
+}
+
+.apps .figure-books figure {
+  transform: translate(-133px, -150px);
+}
+
+.apps .figure-books figcaption {
+  background-image: url('../images/apps_books_caption.png');
+  width: 50px;
+  height: 27px;
+  transform: translate(397px, 707px);
+}
+
+.apps .figure-goodnotes figure {
+  transform: translate(-93px, 68px);
+}
+
+.apps .figure-goodnotes figcaption {
+  background-image: url('../images/apps_goodnotes_caption.png');
+  width: 99px;
+  height: 26px;
+  transform: translate(24px, 690px);
+}
+
+/* privacy */
+.privacy {
+  margin-top: 238px;
+}
+
+.privacy h1 {
+  background-image: url('../images/privacy_headline.png');
+  width: 482px;
+  height: 237px;
+  /* 오른쪽 끝으로 정렬시키기 위해 설정 */
+  margin-left: auto;
+  /* z-index를 설정하기 위해서 position값을 설정 */
+  position: relative;
+  z-index: 1;
+  transform: translate(57px, 0);
+}
+
+.privacy .infos {
+  margin-top: 38px;
+  /* 현재 주축이 세로로 되어있어 교차축의 정렬을 위해 align-items를 설정 */
+  align-items: flex-end;
+}
+
+.privacy figure {
+  transform: translate(-215px, -500px);
+}
+
+.privacy figcaption .caption-apple-id {
+  background-image: url('../images/privacy_caption_apple_id.png');
+  width: 170px;
+  height: 26px;
+  transform: translate(195px, -13px);
+}
+
+.privacy figcaption .caption-touch-id {
+  background-image: url('../images/privacy_caption_touch_id.png');
+  width: 150px;
+  height: 31px;
+  transform: translate(533px, 485px);
+}
+
+/* accessibility */
+.accessibility {
+  margin-top: 266px;
+  margin-bottom: 170px;
+}
+
+.accessibility h1 {
+  background-image: url('../images/accessibility_headline.png');
+  width: 384px;
+  height: 270px;
+}
+
+.accessibility .infos {
+  margin-top: 20px;
+}
+
+.accessibility figure {
+  transform: translate(470px, -620px);
+}
+
+/* ar */
+.ar {
+  background-color: var(--color-section);
+  padding: 20px 20px 0;
+}
+
+.ar .whitebox {
+  padding-bottom: 0;
+}
+
+.ar .inner {
+  display: flex;
+}
+
+.ar .inner>div {
+  max-width: 410px;
+  margin-top: 60px;
+  margin-right: 90px;
+}
+
+/* environment */
+.environment {
+  padding: 20px 20px 0;
+  background-color: var(--color-section);
+  text-align: center;
+}
+
+.environment .icon {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.environment h1 {
+  color: #03a10e;
+}
+
+/* accessory shop */
+.accessory-shop {
+  background-color: var(--color-section);
+  text-align: center;
+}
+
+.accessory-shop .whitebox {
+  padding-bottom: 0;
+}
+
+.accessory-shop .inner {
+  /* 이미지의 가운데 정렬을 위해 img값에 margin을 설정하면 부모요소인inner보다 너비가 넓어 가운데 정렬하지 못한다
+  따라서 flex속성을 통해 가운데 정렬을 해주어야 한다 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.accessory-shop img {
+  margin-top: 50px;
+}
+
+/* trade */
+.trade {
+  padding: 20px 20px 0;
+  background-color: var(--color-section);
+  text-align: center;
+}
+
+/* compare */
+.compare {
+  padding: 20px 20px 0;
+  background-color: var(--color-section);
+  text-align: center;
+}
+
+.compare .items {
+  display: flex;
+  justify-content: space-around;
+  max-width: 940px;
+  margin: 68px auto 74px;
+}
+
+.compare .item {
+  width: 190px;
+  padding-bottom: 34px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.compare .item .thumbnail {
+  height: 214px;
+  margin-bottom: 22px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.compare .item ul.colors {
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+}
+
+.compare .item ul.colors li {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: lightgray;
+  /* 박스 안쪽에 그림자를 설정 */
+  box-shadow: inset 1px 1px 3px rgba(0, 0, 0, .1);
+}
+
+.compare .item h3.name {
+  margin-bottom: 4px;
+  font-size: 22px;
+}
+
+.compare .item .tagline {
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+.compare .item .price {
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.compare .item .btn {
+  margin: 0 auto 14px;
+}
+
+.compare .item a.link {
+  font-size: 14px;
+}
+
+/* footer */
+footer {
+  background-color: var(--color-section);
+}
+
+/* footer/buy-info */
+footer .buy-info {
+  padding: 76px 0;
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+  text-align: center;
+}
+
+footer .buy-info .icon {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 10px;
+}
+
+footer .buy-info h3 {
+  margin-bottom: 8px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+footer .buy-info p {
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+
+footer .buy-info a,
+link {
+  font-size: 14px;
+}
+
+/* footer/warning */
+footer .warning {
+  padding: 18px 0 10px;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+footer .warning ol {
+  /* ol태그에 숫자 속성 넣기 */
+  list-style: decimal;
+  padding-left: 16px;
+}
+
+footer .warning li {
+  margin-bottom: 10px;
+  font-size: 11px;
+  line-height: 1.5;
+  color: var(--color-font-darkgray);
+}
+
+/* footer.breadcrumbs */
+footer .breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  margin: 20px 0;
+}
+
+footer .breadcrumbs a {
+  font-size: 12px;
+  color: var(--color-font-darkgray);
+  position: relative;
+}
+
+footer .breadcrumbs a.apple-logo {
+  background-image: url('../images/path_apple.svg');
+  width: 16px;
+  height: 16px;
+}
+
+footer .breadcrumbs a:hover {
+  text-decoration: underline;
+}
+
+footer .breadcrumbs a::after {
+  content: "";
+  width: 8px;
+  height: 18px;
+  background-image: url('../images/path_div.svg');
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right:-18px;
+  margin:auto;
+}
+
+footer .breadcrumbs a:last-child:after {
+  display: none;
+}
+
+/* footer/navigations */
+footer .navigations{
+  margin-bottom: 40px;
+  height: 344px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: space-between;
+}
+
+footer .navigations .map{
+  margin-top: 24px;
+}
+
+footer .navigations .map:nth-child(6){
+  padding-bottom: 100px;
+}
+
+footer .navigations .map h3{
+  font-size: 12px;
+  font-weight: 600;
+}
+
+footer .navigations .map li{
+  margin-top: 12px;
+  font-size: 12px;
+}
+
+footer .navigations .map li a{
+  color: var(--color-font-darkgray);
+}
+
+footer .navigations .map li a:hover{
+  text-decoration: underline;
+}
+
+footer .how-to-shop{
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--color-font-darkgray);
+}
+
+footer .how-to-shop a{
+  color: var(--color-link);
+}
+
+footer .how-to-shop a:hover{
+  text-decoration: underline;
+}
+
+footer .legal{
+  margin-top: 10px;
+  padding: 10px 0 40px;
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  gap: 50px;
+  font-size: 12px;
+  color: var(--color-font-darkgray);
+}
+
+footer .legal ul{
+  flex-grow: 1;
+  display: flex;
+  gap: 21px;
+}
+
+footer .legal ul li{
+  position: relative;
+}
+
+footer .legal ul li::after{
+  content: "|";
+  position: absolute;
+  right: -11px;
+  color: var(--color-border);
+}
+
+footer .legal ul li:last-child::after{
+  display: none;
+}
+
+footer .legal ul li:hover a{
+  text-decoration: underline;
+}
+
+
+
+
+
+@keyframes sprite-icon {
+
+  /* 1~10 */
+  0.00% {
+    background-position: 0 0;
+  }
+
+  1.67% {
+    background-position: -100px 0;
+  }
+
+  3.33% {
+    background-position: -200px 0;
+  }
+
+  5.00% {
+    background-position: -300px 0;
+  }
+
+  6.67% {
+    background-position: -400px 0;
+  }
+
+  8.33% {
+    background-position: -500px 0;
+  }
+
+  10.00% {
+    background-position: 0 -100px;
+  }
+
+  11.67% {
+    background-position: -100px -100px;
+  }
+
+  13.33% {
+    background-position: -200px -100px;
+  }
+
+  15.00% {
+    background-position: -300px -100px;
+  }
+
+  /* 11~20 */
+  16.67% {
+    background-position: -400px -100px;
+  }
+
+  18.33% {
+    background-position: -500px -100px;
+  }
+
+  20.00% {
+    background-position: 0 -200px;
+  }
+
+  21.67% {
+    background-position: -100px -200px;
+  }
+
+  23.33% {
+    background-position: -200px -200px;
+  }
+
+  25.00% {
+    background-position: -300px -200px;
+  }
+
+  26.67% {
+    background-position: -400px -200px;
+  }
+
+  28.33% {
+    background-position: -500px -200px;
+  }
+
+  30.00% {
+    background-position: 0 -300px;
+  }
+
+  31.67% {
+    background-position: -100px -300px;
+  }
+
+  /* 21~30 */
+  33.33% {
+    background-position: -200px -300px;
+  }
+
+  35.00% {
+    background-position: -300px -300px;
+  }
+
+  36.67% {
+    background-position: -400px -300px;
+  }
+
+  38.33% {
+    background-position: -500px -300px;
+  }
+
+  40.00% {
+    background-position: 0 -400px;
+  }
+
+  41.67% {
+    background-position: -100px -400px;
+  }
+
+  43.33% {
+    background-position: -200px -400px;
+  }
+
+  45.00% {
+    background-position: -300px -400px;
+  }
+
+  46.67% {
+    background-position: -400px -400px;
+  }
+
+  48.33% {
+    background-position: -500px -400px;
+  }
+
+  /* 31~40 */
+  50.00% {
+    background-position: 0 -500px;
+  }
+
+  51.67% {
+    background-position: -100px -500px;
+  }
+
+  53.33% {
+    background-position: -200px -500px;
+  }
+
+  55.00% {
+    background-position: -300px -500px;
+  }
+
+  56.67% {
+    background-position: -400px -500px;
+  }
+
+  58.33% {
+    background-position: -500px -500px;
+  }
+
+  60.00% {
+    background-position: 0 -600px;
+  }
+
+  61.67% {
+    background-position: -100px -600px;
+  }
+
+  63.33% {
+    background-position: -200px -600px;
+  }
+
+  65.00% {
+    background-position: -300px -600px;
+  }
+
+  /* 41~50 */
+  66.67% {
+    background-position: -400px -600px;
+  }
+
+  68.33% {
+    background-position: -500px -600px;
+  }
+
+  70.00% {
+    background-position: 0 -700px;
+  }
+
+  71.67% {
+    background-position: -100px -700px;
+  }
+
+  73.33% {
+    background-position: -200px -700px;
+  }
+
+  75.00% {
+    background-position: -300px -700px;
+  }
+
+  76.67% {
+    background-position: -400px -700px;
+  }
+
+  78.33% {
+    background-position: -500px -700px;
+  }
+
+  80.00% {
+    background-position: 0 -800px;
+  }
+
+  81.67% {
+    background-position: -100px -800px;
+  }
+
+  /* 51~60 */
+  83.33% {
+    background-position: -200px -800px;
+  }
+
+  85.00% {
+    background-position: -300px -800px;
+  }
+
+  86.67% {
+    background-position: -400px -800px;
+  }
+
+  88.33% {
+    background-position: -500px -800px;
+  }
+
+  90.00% {
+    background-position: 0 -900px;
+  }
+
+  91.67% {
+    background-position: -100px -900px;
+  }
+
+  93.33% {
+    background-position: -200px -900px;
+  }
+
+  95.00% {
+    background-position: -300px -900px;
+  }
+
+  96.67% {
+    background-position: -400px -900px;
+  }
+
+  98.33% {
+    background-position: -500px -900px;
+  }
+}
